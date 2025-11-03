@@ -203,12 +203,19 @@ def admin_update_snippet(snippet_id):
     flash('KACHOW! Snippet updated!', 'success')
     return redirect(url_for('admin'))
 
-
-# --- RUN THE APP ---
 if __name__ == '__main__':
     # Create the database if it doesn't exist
-    if not os.path.exists('database.db'):
-        with app.app_context():
+    # (This check might be better as a separate build step,
+    # but is fine for now)
+    with app.app_context():
+        if not os.path.exists('database.db'):
             db.create_all()
             print("Database created!")
-    app.run(debug=True)
+
+    # Get the port from Render's environment variable
+    # Default to 5000 for local testing
+    port = int(os.environ.get('PORT', 5000))
+    
+    # Run the app on 0.0.0.0 to make it visible
+    # Set debug=False for production
+    app.run(host='0.0.0.0', port=port, debug=False)

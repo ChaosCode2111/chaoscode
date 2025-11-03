@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="page-title">OWNER'S CHAOS CONTROL PANEL</h1>
+
+<div class="admin-box">
+    <h2>Add New Snippet</h2>
+    <form action="{{ url_for('admin_add_snippet') }}" method="POST" class="admin-form">
+        <input type="text" name="title" placeholder="Snippet Title" required>
+        <input type="text" name="category" placeholder="Category (e.g., Python)" required>
+        <textarea name="code" placeholder="Paste your code here..." rows="10" required></textarea>
+        <button type="submit" class="btn-yellow">Add Snippet!</button>
+    </form>
+</div>
+
+<div class="admin-box">
+    <h2>Manage Existing Snippets</h2>
+    {% for snippet in snippets %}
+    <div id="snippet-container-{{ snippet.id }}" class="snippet-management-card">
+
+        <form action="{{ url_for('admin_update_snippet', snippet_id=snippet.id) }}" method="POST"
+            class="admin-form-manage">
+            <input type="text" name="title" value="{{ snippet.title }}">
+            <input type="text" name="category" value="{{ snippet.category }}">
+            <textarea name="code" rows="8">{{ snippet.code }}</textarea>
+
+            <div class="admin-manage-buttons">
+                <button type="submit" class="btn-blue">Update</button>
+
+                <button type="button" class="btn-red" onclick="deleteSnippet('{{ snippet.id }}')">
+                    Delete 🗑️
+                </button>
+            </div>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    async function deleteSnippet(snippetId) {
+        if (!confirm('Are you SURE you want to vanish Snippet ID ' + snippetId + '? This cannot be retrieved!')) {
+            return;
+        }
+
+        // 1. Send an asynchronous POST request to the Flask API
+        const response = await fetch(`/admin/delete/${snippetId}`, {
+            method: 'POST',
+            // Headers are often necessary, even if you don't use CSRF for a simple JSON endpoint
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        // 2. CRITICAL CHECK: Ensure the HTTP response status is OK (200-299)
+        if (!response.ok) {
+            alert(`Deletion Failed on Server. Status: ${response.status}. Check Flask logs.`);
+            return;
+        }
+
+        const data = await response.json();
+
+        // 3. Check the JSON body for the 'success: true' flag
+        if (data.success) {
+            // Success! Find the container element using its unique ID
+            const elementToRemove = document.getElementById(`snippet-container-${data.snippet_id}`);
+
+            if (elementToRemove) {
+                // 4. Instant Disappearance: Fade out and remove from the page
+                elementToRemove.style.transition = 'opacity 0.4s ease-out';
+                elementToRemove.style.opacity = '0';
+
+                setTimeout(() => {
+                    elementToRemove.remove();
+                }, 400);
+
+                console.log(data.message);
+
+            } else {
+                alert("Deletion successful (DB updated), but the element on the page was not found!");
+            }
+        } else {
+            // Failure based on JSON body (e.g., custom error message from Flask)
+            alert("Error: " + (data.message || "Could not delete snippet."));
+        }
+    }
+</script>
+
+{% endblock %}

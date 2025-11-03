@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="page-title">{{ category_name }} Chaos</h1>
+    
+    <div class="snippet-list">
+        {% for snippet in snippets %}
+            <div class="snippet-card">
+                <h3>{{ snippet.title }}</h3>
+                <div class="snippet-code-wrapper">
+                    <pre class="snippet-code"><code>{{ snippet.code }}</code></pre>
+                </div>
+                <div class="snippet-actions">
+                    <button class="btn-blue copy-btn">Copy Code</button>
+                    {% if current_user.is_authenticated %}
+                        <button class="btn-yellow save-btn" data-snippet-id="{{ snippet.id }}">
+                            {% if snippet.id in saved_snippet_ids %}
+                                Unsave
+                            {% else %}
+                                Save
+                            {% endif %}
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="snippet-card">
+                <h2>WHOOPS!</h2>
+                <p>No code snippets found for <strong>{{ category_name }}</strong>. UPLOADING SOON!</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

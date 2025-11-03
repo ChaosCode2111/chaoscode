@@ -1,0 +1,270 @@
+/* --- FONT IMPORTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Press+Start+2P&display=swap');
+
+/* --- COLOR VARIABLES (from your theme) --- */
+:root {
+    --main-yellow: #FFD700; /* Main Yellow */
+    --accent-blue: #007BFF;
+    --accent-red: #DC3545;
+    --text-white: #FFFFFF;
+    --bg-beige: #F5F5DC;
+    --bg-light-yellow: #FFFACD;
+    --black: #000000;
+}
+
+/* --- BASE STYLES --- */
+body {
+    font-family: 'Bangers', cursive; /* Crazy cartoon font */
+    background-color: var(--bg-light-yellow);
+    color: var(--black);
+    margin: 0;
+    padding: 0;
+    padding-top: 80px; /* Space for the navbar */
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Press Start 2P', cursive; /* Pixel/crazy font for headers */
+    color: var(--accent-red);
+    text-shadow: 2px 2px 0 var(--black);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    transform: rotate(-2deg);
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: rotate(-2deg) translateY(0); }
+    50% { transform: rotate(2deg) translateY(-10px); }
+}
+
+/* --- BUTTONS (CARTOON STYLE) --- */
+button, .btn-red, .btn-blue, .btn-yellow, .nav-button {
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: 3px solid var(--black);
+    box-shadow: 4px 4px 0 var(--black);
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.1s ease-in-out;
+}
+button:hover, .btn-red:hover, .btn-blue:hover, .btn-yellow:hover, .nav-button:hover {
+    transform: translate(2px, 2px) rotate(-3deg);
+    box-shadow: 2px 2px 0 var(--black);
+}
+button:active, .btn-red:active, .btn-blue:active, .btn-yellow:active, .nav-button:active {
+    transform: translate(4px, 4px) rotate(0deg);
+    box-shadow: 0 0 0 var(--black);
+}
+
+.btn-yellow { background-color: var(--main-yellow); color: var(--black); }
+.btn-blue { background-color: var(--accent-blue); color: var(--text-white); }
+.btn-red { background-color: var(--accent-red); color: var(--text-white); }
+
+
+/* --- NAVBAR --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--main-yellow);
+    border-bottom: 4px solid var(--black);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 100;
+}
+.nav-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2rem;
+    color: var(--accent-red);
+    text-decoration: none;
+    text-shadow: 3px 3px 0 var(--black);
+}
+.nav-links a {
+    margin-left: 10px;
+}
+.admin-btn {
+    background-color: #ff00ff; /* Extra crazy for admin */
+    color: white;
+}
+
+/* --- LOGIN/SIGNUP PAGE (Page 1) --- */
+.login-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.form-box {
+    background: var(--bg-beige);
+    border: 3px solid var(--black);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 5px 5px 0 var(--black);
+    width: 300px;
+}
+.form-box h2 {
+    text-align: center;
+    margin-top: 0;
+}
+.form-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form-box input {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    border: 2px solid var(--black);
+    border-radius: 5px;
+}
+.skip-container {
+    text-align: center;
+    margin-top: 30px;
+}
+.btn-skip {
+    font-size: 1.5rem;
+    padding: 15px 30px;
+}
+
+/* --- CATEGORY PAGE (Page 2) --- */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+.category-card {
+    background: var(--accent-blue);
+    color: var(--text-white);
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    text-decoration: none;
+    padding: 40px 20px;
+    border-radius: 15px;
+    border: 3px solid var(--black);
+    box-shadow: 6px 6px 0 var(--black);
+    text-align: center;
+    transition: all 0.1s ease-in-out;
+}
+.category-card:hover {
+    background: var(--main-yellow);
+    color: var(--black);
+    transform: rotate(3deg) scale(1.05);
+}
+
+/* --- SNIPPET PAGE (Page 3 & Dashboard) --- */
+.snippet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.snippet-card {
+    background: var(--bg-beige);
+    border: 3px solid var(--black);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 5px 5px 0 var(--black);
+}
+.snippet-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+.snippet-code-wrapper {
+    /* This makes the expand/collapse work */
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px dashed var(--accent-blue);
+    background: var(--text-white);
+}
+.snippet-code-wrapper:hover {
+    border-color: var(--accent-red);
+}
+.snippet-code {
+    /* The actual code block */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    background: var(--text-white);
+    padding: 10px;
+    margin: 0;
+    
+    /* This is the magic for 'expand' */
+    max-height: 150px; /* Collapsed height */
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+.snippet-code.expanded {
+    max-height: 2000px; /* Expanded height */
+    transition: max-height 0.5s ease-in;
+}
+.snippet-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+/* --- FLASH MESSAGES --- */
+.flash-messages {
+    padding: 0;
+    list-style: none;
+    margin-bottom: 20px;
+}
+.flash {
+    padding: 15px;
+    font-size: 1.3rem;
+    border: 3px solid var(--black);
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 var(--black);
+    text-align: center;
+}
+.flash-error { background-color: var(--accent-red); color: var(--text-white); }
+.flash-success { background-color: #28a745; color: var(--text-white); }
+
+
+/* --- ADMIN PAGE --- */
+.admin-box {
+    background: var(--bg-beige);
+    border: 3px solid var(--accent-red);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 5px 5px 0 var(--accent-red);
+}
+.admin-form, .admin-form-manage {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.admin-form-manage {
+    border: 2px dashed var(--black);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+.admin-box input, .admin-box textarea {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    padding: 10px;
+    border: 2px solid var(--black);
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box; /* Fixes width issue */
+}
+.admin-manage-buttons {
+    display: flex;
+    gap: 10px;
+}

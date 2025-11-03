@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-container">
+    <div class="form-box" id="login-box">
+        <h2>Login!</h2>
+        <form action="{{ url_for('login') }}" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="btn-yellow">Go!</button>
+        </form>
+    </div>
+
+    <div class="form-box" id="signup-box">
+        <h2>Sign Up!</h2>
+        <form action="{{ url_for('signup') }}" method="POST">
+            <input type="text" name="username" placeholder="New Username" required>
+            <input type="password" name="password" placeholder="New Password" required>
+            <button type="submit" class="btn-blue">Create!</button>
+        </form>
+    </div>
+</div>
+
+<div class="skip-container">
+    <a href="{{ url_for('skip_login') }}" class="btn-red btn-skip">...or just SKIP LOGIN!</a>
+</div>
+{% endblock %}

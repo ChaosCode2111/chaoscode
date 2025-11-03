@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="page-title">Pick Your Chaos!</h1>
+    <div class="category-grid">
+        {% for category in categories %}
+            <a href="{{ url_for('show_snippets', category_name=category) }}" class="category-card">
+                {{ category }}
+            </a>
+        {% else %}
+            <div class="snippet-card">
+                <h2>Nothin' here!</h2>
+                <p>The owner is probably sleeping. Tell them to upload some code!</p>
+            </div>
+        {% endfor %}
+
+        <div class="category-card" style="background-color: #aaa; cursor: not-allowed;">
+            AIML (Uploading Soon!)
+        </div>
+        <div class="category-card" style="background-color: #aaa; cursor: not-allowed;">
+            JavaScript (Uploading Soon!)
+        </div>
+    </div>
+{% endblock %}

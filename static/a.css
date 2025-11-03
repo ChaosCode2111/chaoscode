@@ -1,0 +1,298 @@
+/* --- CUTE & AESTHETIC THEME --- */
+
+/* --- Font Imports --- */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* --- Color Palette (Softer Version) --- */
+:root {
+    --main-yellow: #FFF8E1;     /* Soft Buttery Yellow */
+    --accent-blue: #A0D2EB;     /* Light Powder Blue */
+    --accent-pink: #FFB6C1;     /* Was Red, now Soft Pink/Coral */
+    --text-white: #FFFFFF;
+    --bg-beige: #FDFBF5;       /* Warm Off-white Beige */
+    --text-dark: #4A4A4A;      /* Soft Black/Dark Grey */
+    --border-color: #EAEAEA;
+}
+
+/* --- Base Styles --- */
+body {
+    font-family: 'Quicksand', sans-serif; /* Cute, rounded font */
+    background-color: var(--bg-beige);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    padding-top: 80px; /* Space for the navbar */
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.page-title {
+    font-family: 'Pacifico', cursive; /* Cute cursive font */
+    text-align: center;
+    font-size: 3rem;
+    color: var(--accent-pink);
+    text-shadow: none; /* Removed the hard shadow */
+    font-weight: 400;
+}
+
+/* --- Buttons (Aesthetic Style) --- */
+button, .btn-red, .btn-blue, .btn-yellow, .nav-button {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none; /* No hard border */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    border-radius: 50px; /* Cute pill shape */
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+button:hover, .btn-red:hover, .btn-blue:hover, .btn-yellow:hover, .nav-button:hover {
+    transform: translateY(-2px); /* Gentle lift on hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+button:active, .btn-red:active, .btn-blue:active, .btn-yellow:active, .nav-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-yellow { background-color: var(--main-yellow); color: var(--text-dark); border: 1px solid #FBE9B1; }
+.btn-blue { background-color: var(--accent-blue); color: var(--text-dark); }
+.btn-red { background-color: var(--accent-pink); color: var(--text-dark); }
+
+
+/* --- Navbar --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--text-white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+.nav-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    color: var(--accent-blue);
+    text-decoration: none;
+    text-shadow: none;
+}
+.nav-links a {
+    margin-left: 10px;
+}
+.admin-btn {
+    background-color: var(--accent-pink);
+    color: white;
+}
+.admin-btn:hover {
+    background-color: #ff9aab;
+}
+
+/* --- Login/Signup Page (Page 1) --- */
+.login-container {
+    display: flex;
+    justify-content: center; /* Centered */
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.form-box {
+    background: var(--text-white);
+    border: 1px solid var(--border-color);
+    border-radius: 20px; /* Softer corners */
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    width: 320px;
+    transition: all 0.3s ease;
+}
+.form-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+.form-box h2 {
+    text-align: center;
+    margin-top: 0;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+.form-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form-box input {
+    font-family: 'Quicksand', sans-serif;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--bg-beige);
+}
+.form-box input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(160, 210, 235, 0.5);
+}
+.skip-container {
+    text-align: center;
+    margin-top: 30px;
+}
+.btn-skip {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+}
+
+/* --- Category Page (Page 2) --- */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+.category-card {
+    background: var(--accent-blue);
+    color: var(--text-dark);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    text-decoration: none;
+    padding: 40px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(160, 210, 235, 0.4);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+.category-card:hover {
+    background: var(--main-yellow);
+    color: var(--text-dark);
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(255, 248, 225, 0.7);
+}
+
+/* --- Snippet Page (Page 3 & Dashboard) --- */
+.snippet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.snippet-card {
+    background: var(--text-white);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+.snippet-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+.snippet-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--accent-blue);
+}
+.snippet-code-wrapper {
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background: #fdfdfd;
+}
+.snippet-code-wrapper:hover {
+    border-color: var(--accent-blue);
+}
+.snippet-code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    background: #fdfdfd;
+    padding: 15px;
+    margin: 0;
+    border-radius: 10px;
+    
+    /* This is the magic for 'expand' */
+    max-height: 150px; /* Collapsed height */
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+.snippet-code.expanded {
+    max-height: 2000px; /* Expanded height */
+    transition: max-height 0.5s ease-in;
+}
+.snippet-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+/* --- Flash Messages --- */
+.flash-messages {
+    padding: 0;
+    list-style: none;
+    margin-bottom: 20px;
+}
+.flash {
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+.flash-error { background-color: var(--accent-pink); color: var(--text-white); }
+.flash-success { background-color: #B2EBF2; color: var(--text-dark); } /* Light cyan */
+
+
+/* --- Admin Page --- */
+.admin-box {
+    background: var(--text-white);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+.admin-form, .admin-form-manage {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.admin-form-manage {
+    border: 1px dashed var(--border-color);
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+.admin-box input, .admin-box textarea {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box; /* Fixes width issue */
+}
+.admin-box textarea {
+    font-family: 'Courier New', Courier, monospace;
+    min-height: 150px;
+}
+.admin-manage-buttons {
+    display: flex;
+    gap: 10px;
+}
